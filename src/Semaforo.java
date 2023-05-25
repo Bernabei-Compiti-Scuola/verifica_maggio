@@ -1,4 +1,5 @@
-public class Semaforo {
+public class Semaforo 
+{
 
     private int valore;
 
@@ -23,8 +24,7 @@ public class Semaforo {
         while (valore == 0) {
             try 
             {
-                Thread.currentThread().setName();
-                System.out.println(Thread.currentThread().getName() + "in attesa");
+                System.out.println("-------"+Thread.currentThread().getName() + "in attesa-------");
                 wait();
             } catch (Exception e) 
             
