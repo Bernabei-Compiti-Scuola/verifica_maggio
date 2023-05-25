@@ -1,6 +1,9 @@
 public class Box 
 {
-
+    /**
+     * 
+     * @param m
+     */
     public void PitStop(Macchina m) 
     {
         
