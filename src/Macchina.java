@@ -62,16 +62,7 @@ public class Macchina extends Thread
             if(i==3|| i==6||i==9)
             {
                 s.P();
-                int ssec=(int) (Math.random()*(4))+1;
-                ssec=ssec*1000;
-                try
-                {
-                    Thread.sleep(ssec);
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
+                
                 bx.PitStop(this);
                 s.V();
             }

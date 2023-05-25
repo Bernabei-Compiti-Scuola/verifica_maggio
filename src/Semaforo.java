@@ -28,7 +28,7 @@ public class Semaforo
         while (valore == 0) {
             try 
             {
-                System.out.println("-------"+Thread.currentThread().getName() + "in attesa-------");
+                System.out.println("----"+Thread.currentThread().getName() + " in attesa del pit-stop ----");
                 wait();
             } catch (Exception e) 
             
