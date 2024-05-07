@@ -1,3 +1,9 @@
+/**
+ * La classe rappresenta e gestisce una macchina
+ * Simula una gara composta da 10 giri di pista
+ * 
+ * @author IacopoLibero
+ */
 public class Macchina extends Thread
 {
     private int id;
@@ -5,6 +11,7 @@ public class Macchina extends Thread
     private Pilota p;
     private Box bx;
     private Semaforo s;
+    
     /**
      * 
      * @param id
@@ -41,31 +48,35 @@ public class Macchina extends Thread
     public Pilota getP() {
         return p;
     }
+
     /**
-     * fa partire il thread, cioè gestisce i giri e i pit-stop
+     * Metodo run che simula una gara da 10 giri di pista
+     * La vettura per ogni giro di pista impiega un tempo random da 1 a 4 secondi(simulare con uno Sleep)
+     * Ogni 3 giri viene usata la risorsa box per fare il pitstop
      */
+    @Override
     public void run()
     {
-        for(int i=1;i<=10;i++)
+        for(int i=0;i<10;i++)
         {
-            int sec=(int) (Math.random()*(3))+1;
+            if(i%3==0 && i>0)
+            {
+                s.P();
+                    bx.PitStop(this);
+                s.V();
+            }
+            int sec=(int) (Math.random()*4)+1;
             sec=sec*1000;
             try 
             {
                 Thread.sleep(sec);
             } 
-            catch (InterruptedException e) 
+            catch (Exception e) 
             {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
-            System.out.println("GIRO-"+i+" completato "+p.getNome());
-            if(i==3|| i==6||i==9)
-            {
-                s.P();
-                
-                bx.PitStop(this);
-                s.V();
-            }
+            System.out.println("GIRO-"+(i+1)+" completato "+p.getNome());
         }
     }
+    
 }

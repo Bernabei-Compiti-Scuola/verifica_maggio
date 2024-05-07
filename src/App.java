@@ -1,4 +1,5 @@
-public class App {
+public class App 
+{
     public static void main(String[] args) throws Exception 
     {
         Pilota p1=new Pilota("perez");
@@ -21,12 +22,16 @@ public class App {
         m4.start();
         m5.start();
 
+        /* 
+            la funzione join() blocca il chiamante fino a che il thread sul quale
+            si chiama join() non termina la propria esecuzione
+        */
         m1.join();
         m2.join();
         m3.join();
         m4.join();
         m5.join();
-
+        
         System.out.println("gara finita");
     }
 }
